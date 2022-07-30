@@ -1,0 +1,30 @@
+<div class="pt-5 text-center">
+    <div class="col-12">
+        <p class="fs-2 fst-italic" *ngIf="listIsEmpty">
+            You have nothing added to your to do list !!
+        </p>
+    </div>
+    <p class="fs-4" *ngIf="!listIsEmpty">Tasks to be done</p>
+    <div class="row fs-4 text-start mb-1" *ngIf="!listIsEmpty">
+        <div class="col-3">
+            Tasks
+        </div>
+        <div class="col-2">
+            Priority
+        </div>
+        <div class="col-4">
+            Date
+        </div>
+    </div>
+    <div class="col-12 fs-4 float-start" *ngFor=" let list of toDoList; let i = index">
+        <div class="row border rounded text-start my-1">
+            <div class="col-3">{{ list.task }}</div>
+            <div class="col-2">{{ list.priority }}</div>
+            <div class="col-3">{{ list.date | date }}</div>
+            <div class="col-4 text-end">
+                <button class="btn btn-dark m-1 p-1" (click)="removeTask(i)">remove</button>
+                <button class="btn btn-dark m-1 p-1" (click)="updateItem(i)">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

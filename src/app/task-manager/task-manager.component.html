@@ -1,0 +1,23 @@
+<div class="pt-3">
+    <div class="col-12 rounded border-bottom bg-light">
+        <p class="fs-3 fw-bold text-center text-dark">
+            Task Manager
+        </p>
+    </div>
+    <div class="col-12">
+        <form [formGroup]="listInputs" class="my-2">
+            <input type="text" class="form-control form-control-lg mt-5" placeholder="Add your daily tasks here."
+                formControlName="List">
+            <div class="col-12 fs-5 text-white mt-2">{{ Priority }}</div>
+        </form>
+    </div>
+    <div class="col-12 fs-5 mt-4 text-white" *ngIf="listInputs.valid">Set your priority for this task</div>
+    <div class="col-12 mt-3">
+        <button class="fw-semibold btn btn-primary" *ngIf="listInputs.valid"
+            (click)="setPriority('High')">High</button>&nbsp;
+        <button class="fw-semibold btn btn-primary" *ngIf="listInputs.valid"
+            (click)="setPriority('Medium')">Medium</button>&nbsp;
+        <button class="fw-semibold btn btn-primary" *ngIf="listInputs.valid" (click)="setPriority('Low')">Low</button>
+        <button type="submit" class="float-end w-25 fw-semibold btn btn-warning" (click)="addTask()">{{ editMode ? 'Update': 'Add' }}</button>
+    </div>
+</div>
